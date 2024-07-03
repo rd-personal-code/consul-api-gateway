@@ -1,0 +1,26 @@
+global:
+  enabled: true
+  name: consul
+  image: hashicorp/consul:1.16.0
+  datacenter: dc1
+  tls:
+    enabled: true
+  acls:
+    manageSystemACLs: true
+server:
+  enabled: true
+  replicas: 3
+ui:
+  enabled: true
+  service:
+    type: NodePort
+connectInject:
+  enabled: true
+  apiGateway:
+  # Configuration settings for the GatewayClass
+    managedGatewayClass:
+      serviceType: NodePort
+      deployment:
+        defaultInstances: 1
+        maxInstances: 1
+        minInstances: 1
